@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Volo.Abp.IdentityServer;
 
 namespace Acme.BookStore.EntityFrameworkCore
 {
@@ -11,6 +12,8 @@ namespace Acme.BookStore.EntityFrameworkCore
     {
         public BookStoreMigrationsDbContext CreateDbContext(string[] args)
         {
+            AbpIdentityServerDbProperties.DbTablePrefix = "MyIdentityServer";
+
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<BookStoreMigrationsDbContext>()

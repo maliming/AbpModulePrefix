@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using Volo.Abp.IdentityServer;
 
 namespace Acme.BookStore.DbMigrator
 {
@@ -11,6 +12,8 @@ namespace Acme.BookStore.DbMigrator
     {
         static async Task Main(string[] args)
         {
+            AbpIdentityServerDbProperties.DbTablePrefix = "MyIdentityServer";
+            
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)

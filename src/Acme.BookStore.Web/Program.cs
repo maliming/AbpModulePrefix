@@ -3,13 +3,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using Volo.Abp.IdentityServer;
 
 namespace Acme.BookStore.Web
 {
     public class Program
     {
         public static int Main(string[] args)
-        {
+        {            
+            AbpIdentityServerDbProperties.DbTablePrefix = "MyIdentityServer";
+            
             Log.Logger = new LoggerConfiguration()
 #if DEBUG
                 .MinimumLevel.Debug()
